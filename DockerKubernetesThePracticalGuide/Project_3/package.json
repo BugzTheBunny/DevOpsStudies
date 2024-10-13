@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "test": "file:"
-  },
-  "devDependencies": {}
+    "test": "file:",
+    "x": "file:"
+  }
 }

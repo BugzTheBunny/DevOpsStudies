@@ -12,3 +12,4 @@
      - npm
      - Laravel Artisan
      - Composer
+- [Project 5 - AWS Deployment](./DockerKubernetesThePracticalGuide/Project_5/README.md)

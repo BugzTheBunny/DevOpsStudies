@@ -9,6 +9,7 @@
   "author": "Maximilian Schwarzmüller / Academind GmbH",
   "license": "ISC",
   "dependencies": {
+    "docker-simple-node": "file:",
     "express": "^4.17.1"
   }
 }
