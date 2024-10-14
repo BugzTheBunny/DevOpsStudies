@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment # Type of resource to create
+metadata:
+  name: second-app-deployment
+spec:
+  replicas: 2 # Amount of replicas
+  selector: # Sort of like pointers, selects what K8 should control.
+    matchLabels: # This will match the labels in the template labels below.
+      app: second-app
+      tier: backend
+  template:
+    # kind: Pod # The template of a pod is always pod, so we don't need to add this.
+    metadata: # meta data for pods
+      labels:
+        app: second-app # key, value can be any.
+        tier: backend
+    spec: # specs for pods
+      containers: # Containers INSIDE the pod
+        - name: second-node
+          image: bugzthebunny/kub-first-app:latest # Image for the container

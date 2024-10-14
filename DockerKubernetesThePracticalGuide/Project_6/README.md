@@ -44,11 +44,27 @@
 
 ## Project
 
-- build - `docker build -t kub-first-app .`
-- tag - `docker tag kub-first-app bugzthebunny/kub-first-app`
-- start - `kubectl create deployment first-app --image=bugzthebunny/kub-first-app`
+- **build** - `docker build -t kub-first-app .`
+- **tag** - `docker tag kub-first-app bugzthebunny/kub-first-app`
+- **push image** - `docker push bugzthebunny/kub-first-app`
+- **start** - `kubectl create deployment first-app --image=bugzthebunny/kub-first-app`
     - This command creates a Master Node (control plane)
-- verify - `kubectl get deployments` || `kubectl get pods`
-- dashboard - `minikube dashboard`
-- exposing paths - `kubectl expose deployment first-app --type=LoadBalancer --port=8080`
-- getting service path - `minikube service first-app`
+- **verify** - `kubectl get deployments` || `kubectl get pods`
+- **dashboard** - `minikube dashboard`
+- **exposing paths** - `kubectl expose deployment first-app --type=LoadBalancer --port=8080`
+- **getting service path** - `minikube service first-app` (open dashboard so you can see it in a dashboard, and it should open a window with the app)
+- **scaling** - `kubectl scale deployment/first-app --replicas=<n>`
+- **update deployment (after rebuild & push of new image)** - `kubectl set image deployment/first-app kub-first-app=deployment/first-app` - You will not see the change, because you first need to make a tag, so for example rebuild like in the following
+- **build with tag** - `docker build -t bugzthebunny/kub-first-app:2 .`
+- **push with the new tag** - `docker push bugzthebunny/kub-first-app:2`
+- **update deployment with new tag** - `kubectl set image deployment/first-app kub-first-app=bugzthebunny/kub-first-app:2`
+- **check deployment status** - `kubectl rollout status deployment/first-app`
+- **rollback to previous deployment** - `kubectl rollout undo deployment/first-app`
+- **rollout history** - `kubectl rollout history deployment/first-app`
+- **rollout to specific revision** - `kubectl rollout undo deployment/first-app --to-revision=<n>`
+
+- **apply yaml** - `kubectl apply -f <filename>.yaml`
+
+- ## EXTRAS
+- **delete deployment** - `kubectl delete -n default deployment first-app`
+- **delete a service** - `kubectl delete svc first-app`
