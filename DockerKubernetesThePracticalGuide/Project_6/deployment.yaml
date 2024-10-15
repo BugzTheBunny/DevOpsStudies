@@ -18,3 +18,9 @@ spec:
       containers: # Containers INSIDE the pod
         - name: second-node
           image: bugzthebunny/kub-first-app:latest # Image for the container
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
